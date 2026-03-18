@@ -9,9 +9,16 @@ import {
 } from '@angular/material/dialog';
 import {UsersService} from '../../../services/users.service';
 import {MatFormField, MatHint, MatInput, MatLabel} from '@angular/material/input';
-import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
+import {
+  MatDatepicker,
+  MatDatepickerInput,
+  MatDatepickerModule,
+  MatDatepickerToggle
+} from '@angular/material/datepicker';
 import {MatButton} from '@angular/material/button';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatIcon} from '@angular/material/icon';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @Component({
   selector: 'app-edition-dialog',
@@ -23,13 +30,16 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
     MatInput,
     MatLabel,
     MatDatepickerInput,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatDatepickerToggle,
     MatHint,
     MatDatepicker,
     MatDialogActions,
     MatDialogClose,
     MatButton,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIcon,
   ],
   templateUrl: './edition-dialog-component.html',
 })
@@ -63,8 +73,13 @@ export class EditionDialogComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
+    const data = {
+      name: this.form.value.name || '',
+      description: this.form.value.description || '',
+      birthdate: this.form.value.birthdate ? this.form.value.birthdate.getTime() : Date.now(),
+    };
 
-    this.usersService.update(this.data.user.id, this.data.user).then(() => {
+    this.usersService.update(this.data.user.id, data).then(() => {
       this.dialog.closeAll();
     });
   }

@@ -44,7 +44,7 @@ export class UsersService {
     ));
   }
 
-  update(id: number, user: Omit<IUser, 'id'>) {
+  update(id: number, user: Partial<IUser>) {
     if (this.isLoading()) {
       return Promise.reject();
     }
@@ -53,7 +53,7 @@ export class UsersService {
     return firstValueFrom(this.httpClient.put(`https://test.com/xxx/${id}`, user).pipe(
       catchError(() => of(null)),
       tap(() => {
-        this.users.update(users => users.map(user => user.id === id ? {...user, ...user} : user));
+        this.users.update(users => users.map(u => u.id === id ? {...u, ...user} : u));
         this.isLoading.set(false);
       }),
       map(() => null)

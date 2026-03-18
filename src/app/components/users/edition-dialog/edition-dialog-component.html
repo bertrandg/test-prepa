@@ -1,4 +1,7 @@
-<h2 mat-dialog-title>Edition</h2>
+<h2 mat-dialog-title>
+  <mat-icon>edit</mat-icon>
+  Edition
+</h2>
 
 <mat-dialog-content>
   <form [formGroup]="form">
@@ -14,11 +17,11 @@
 
     <mat-form-field>
       <mat-label>Birthdate</mat-label>
-      <input [matDatepicker]="picker" matInput>
+      <input [matDatepicker]="picker" formControlName="birthdate" matInput>
       <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle [for]="picker" matIconSuffix></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+    <mat-datepicker-toggle [for]="picker" matIconSuffix></mat-datepicker-toggle>
   </form>
 </mat-dialog-content>
 

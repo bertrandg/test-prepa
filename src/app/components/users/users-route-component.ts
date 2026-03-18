@@ -30,9 +30,7 @@ export class UsersRouteComponent implements OnInit {
   }
 
   updateUser(user: IUser) {
-    this.dialog.open(EditionDialogComponent, {
-      data: {user},
-    });
+    this.dialog.open(EditionDialogComponent, {data: {user}});
   }
 
   deleteUser(id: number) {
