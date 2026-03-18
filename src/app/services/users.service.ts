@@ -1,6 +1,6 @@
 import {inject, Injectable, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {catchError, of, tap} from 'rxjs';
+import {catchError, firstValueFrom, of, tap} from 'rxjs';
 import {random} from 'lodash-es';
 
 @Injectable({
@@ -18,17 +18,35 @@ export class UsersService {
     }
 
     this.isLoading.set(true);
-    return this.httpClient.get<IUser[]>('https://jsonplaceholder.typicode.com/todos/1').pipe(
-      catchError(() => of([
-        {id: 1, name: 'nameA', email: 'emailA', description: 'descA', birthdate: Date.now() - 1515555},
-        {id: 2, name: 'nameB', email: 'emailB', description: 'descB', birthdate: Date.now() - 9465656565},
-        {id: 3, name: 'nameC', email: 'emailC', description: 'descC', birthdate: Date.now() - 545454555},
+    return firstValueFrom(this.httpClient.get<IUser[]>('https://jsonplaceholder.typicode.com/todosXX').pipe(
+      catchError(() => of(this.users().length ? this.users() : [
+        {
+          id: 1,
+          name: 'nameA',
+          email: 'emailA',
+          description: 'descA skdjfkdsj hgkjdsg hkjdsg hjkdsg hjkdgh kjdsg hkdjsgh jkdfh lkfgjhilfdgihjdruih sdkjg dfgh udfgku drukrgh drkugh udkrhg kudhg ukdrhguk dkufhg ',
+          birthdate: Date.now() - 1515555000000
+        },
+        {
+          id: 2,
+          name: 'nameB',
+          email: 'emailB',
+          description: 'descB xcvlkxcuvkg hdkufg hkucvbh kucvbhvu gbycv jygcvjg vyjbcvjygb gyjvc gjyvcgjyvcg jyvcg yjvcgjyvcg cvjy cgjy gcyjv gyjcvgcjyvgjvcy',
+          birthdate: Date.now() - 946565656500
+        },
+        {
+          id: 3,
+          name: 'nameC',
+          email: 'emailC',
+          description: 'descC kdvkjxcvudsguvy tuystyust yusyus fuydysuftdsuyft dsyu ftusd ytsduy tsduy tuysdyu ftsduydstuyg gyustuydyutsduytdsuytdsfuy sytu tuystyusuytsuy',
+          birthdate: Date.now() - 545454555000
+        },
       ])),
       tap(users => {
         this.users.set(users);
         this.isLoading.set(false);
       })
-    );
+    ));
   }
 
   create(user: Omit<IUser, 'id'>) {

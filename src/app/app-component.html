@@ -1,0 +1,26 @@
+<mat-toolbar class="w-full flex">
+  <h1>My Application</h1>
+
+  <div class="mx-4 flex gap-3">
+    <button
+      [routerLink]="['/home']"
+      matButton="outlined"
+      routerLinkActive="!bg-sky-300"
+    >
+      Home
+    </button>
+    <button
+      [routerLink]="['/users']"
+      matButton="outlined"
+      routerLinkActive="!bg-sky-300"
+    >
+      Users
+    </button>
+  </div>
+</mat-toolbar>
+
+<div class="basis-full size-full flex justify-center pt-8 bg-sky-300">
+  <div class="w-full md:max-w-[1200px] flex justify-center bg-white p-5 m-5">
+    <router-outlet></router-outlet>
+  </div>
+</div>

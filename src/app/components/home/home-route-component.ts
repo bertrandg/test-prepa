@@ -1,19 +1,19 @@
 import {Component, signal} from '@angular/core';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input'
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-users',
   imports: [
-    MatSlideToggle,
     MatFormField,
+    MatInput,
     MatLabel,
-    MatInput
+    MatSlideToggle
   ],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  templateUrl: './home-route-component.html',
+  host: {'class': 'w-full'},
 })
-export class App {
+export class HomeRouteComponent {
   title = signal('activate me');
   displayForm = signal(false);
 }
