@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
-import {MatFormField, MatHint, MatInput, MatLabel} from '@angular/material/input';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input'
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,6 @@ import {MatFormField, MatHint, MatInput, MatLabel} from '@angular/material/input
     MatSlideToggle,
     MatFormField,
     MatLabel,
-    MatHint,
     MatInput
   ],
   templateUrl: './app.html',
