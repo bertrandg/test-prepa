@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input'
 
@@ -14,7 +14,6 @@ import {MatFormField, MatInput, MatLabel} from '@angular/material/input'
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('activate me');
-
+  title = signal('activate me');
   displayForm = signal(false);
 }

@@ -1,12 +1,10 @@
-
-
 <div class="size-full flex items-center justify-center bg-sky-300">
 
   <div>
     <h1 class="mb-4">Hello World</h1>
     <mat-slide-toggle (toggleChange)="displayForm.set(!displayForm())" class="mb-4">{{ title() }}</mat-slide-toggle>
 
-    @if(displayForm()) {
+    @if (displayForm()) {
       <br>
       <hr>
       <br>
