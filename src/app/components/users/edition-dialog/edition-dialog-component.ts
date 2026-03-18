@@ -8,7 +8,7 @@ import {
   MatDialogTitle
 } from '@angular/material/dialog';
 import {UsersService} from '../../../services/users.service';
-import {MatFormField, MatHint, MatInput, MatLabel} from '@angular/material/input';
+import {MatFormField, MatHint, MatInput, MatLabel, MatSuffix} from '@angular/material/input';
 import {
   MatDatepicker,
   MatDatepickerInput,
@@ -40,6 +40,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatButton,
     ReactiveFormsModule,
     MatIcon,
+    MatSuffix,
   ],
   templateUrl: './edition-dialog-component.html',
 })
