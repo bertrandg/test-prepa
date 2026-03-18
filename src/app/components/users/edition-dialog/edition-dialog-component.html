@@ -1,5 +1,34 @@
 <h2 mat-dialog-title>Edition</h2>
 
 <mat-dialog-content>
-  XXX
+  <form [formGroup]="form">
+    <mat-form-field class="w-full">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="Name">
+    </mat-form-field>
+
+    <mat-form-field class="w-full">
+      <mat-label>Description</mat-label>
+      <textarea class="!h-[220px]" formControlName="description" matInput placeholder="Description..."></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Birthdate</mat-label>
+      <input [matDatepicker]="picker" matInput>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle [for]="picker" matIconSuffix></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
 </mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-dialog-close matButton>Cancel</button>
+  <button
+    (click)="update()"
+    [disabled]="form.invalid"
+    matButton
+  >
+    Update
+  </button>
+</mat-dialog-actions>

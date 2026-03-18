@@ -1,9 +1,10 @@
-import {Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-users',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatFormField,
     MatInput,

@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {UsersService} from '../../services/users.service';
 import {MatButton} from '@angular/material/button';
 import {DisplayableDatePipe} from './displayable-date-pipe';
@@ -8,6 +8,7 @@ import {EditionDialogComponent} from './edition-dialog/edition-dialog-component'
 
 @Component({
   selector: 'app-users',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButton,
     DisplayableDatePipe,
@@ -35,6 +36,6 @@ export class UsersRouteComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    //TODO confirmation modal
+    this.usersService.delete(id);
   }
 }
